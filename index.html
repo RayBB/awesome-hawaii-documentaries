@@ -2,74 +2,102 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawaii Documentaries</title>
   </head>
   <body>
-      <h1 class="title">Hawaii Documentaries</h1>
+      <div style="width:100vw;">
+          <h1 class="title">Hawaii Documentaries</h1>
+      </div>
       <div class="wrapper">
         <div class="movie-box">
-            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
-            <img class="bird" src="bird.png">
+            <div class="movie_and_title">
+                <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
+                <img class="bird" src="bird.png">
+                <br>
+                Kumu Hina: The movie with a really long title that fucking goes on forever!
+            </div>
             <div class="infobox">
                 <p class="description">
                     A transgender Native Hawaiian teacher inspires a young girl to fulfill 
                     her destiny of leading the school's male hula troupe, even as she 
                     struggles to find love and a committed relationship in her own life.
                 </p>
-                <span class="movie-links">
-                    <a>fish</a>
+                <span class="movie_links">
+                    <a href="#">TMDB | WIKI | IMDB | WATCH</a>
                 </span>
             </div>
             <br>
-            Kumu Hina
         </div>
-        <div class="movie-box">
-            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
-            <img class="bird" src="bird.png">
-            <br>
-            Kumu Hina
-        </div>
-        <div class="movie-box">
-            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
-            <img class="bird" src="bird.png">
-            <br>
-            Kumu Hina
-        </div>
-        <div class="movie-box">
-            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
-            <img class="bird" src="bird.png">
-            <br>
-            Kumu Hina
-        </div>
-        <div class="movie-box">
-            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
-            <img class="bird" src="bird.png">
-            <br>
-            Kumu Hina
-        </div>
+      </div>
+      <div>
+          <h1>ender</h1>
       </div>
   </body>
 </html>
-<style>
-    .movie-links{
-        position: absolute;
-        bottom: 0;
+<script>
+    fetch("./documentaries.json")
+    .then(async (response) =>{
+        let movies = await response.json();
+        //debugger;
+        document.querySelector(".wrapper").innerHTML += movies.map(movie => createMovieHtml(movie))
+    })
+    .then(data => console.log(data));
+    let text = document.querySelector(".wrapper").innerHTML;
+    
+    function createMovieHtml(movie){
+        const posterURL = "https://image.tmdb.org/t/p/original" + movie.Poster;
+        let out = `
+        <div class="movie-box">
+            <div class="movie_and_title">
+                <img class="poster" src="${posterURL}">
+                <img class="bird" src="bird.png">
+                <br>
+                ${movie.Title}
+            </div>
+            <div class="infobox">
+                <p class="description">
+                    A transgender Native Hawaiian teacher inspires a young girl to fulfill 
+                    her destiny of leading the school's male hula troupe, even as she 
+                    struggles to find love and a committed relationship in her own life.
+                </p>
+                <span class="movie_links">
+                    <a href="#">TMDB | WIKI | IMDB | WATCH</a>
+                </span>
+            </div>
+            <br>
+        </div>
+        `
+        return out;
     }
-    .description{
-        float: left;
+</script>
+<style>
+    .movie_links{
+        width: 100%;
+        text-align: center;
+        display: inline-block;
+        bottom: 0;
+        position: absolute
+    }
+    .movie_and_title{
+        position: relative;
+        width: 10vw;
     }
     .infobox {
         background-color:burlywood;
-        height: 75%;
-        width: 70%;
-        margin: auto;
-        display: inline-block;
+        position: relative;
+        height: 30vh;
+        width: 100%;
+        padding: 5px;
+        margin-left: 5px;
+        visibility: hiddenn;
     }
     .bird {
-        position: relative;
+        position: absolute;
         visibility: hidden;
-        top: -30vh;
-        left: -32px;
+        height: 32px;
+        top: -32px;
+        right: 0px;
     }
     body{
         background: url('electric_blue.png')
@@ -78,15 +106,16 @@
         color:orange;
         text-align: center;
         font-size: 4em;
+        width: 100%;
     }
     .wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-wrap: wrap;
     }
-    .movie-box:hover > .bird {
+    .movie-box:hover .bird {
         visibility: visible;
     }
-    .movie-box:hover > .speech {
+    .movie-box:hover > .infobox {
         visibility: visible;
     }
     body{
@@ -94,9 +123,19 @@
     }
     .movie-box {
         height: 40vh;
+        display: flex;
+        flex-direction: row;
+        width: 30vw;
+        min-width: 500px;
+        padding: 20px;
+    }
+    
+    @media only screen and (max-width: 1000px) {
+    .movie-box{
+        min-width: fit-content;
+    }
     }
     .poster {
-        height: 30vh;
-        display: inline-block;
+        width: 100%;
     }
 </style>
