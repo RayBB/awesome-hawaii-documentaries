@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hawaii Documentaries</title>
+  </head>
+  <body>
+      <h1 class="title">Hawaii Documentaries</h1>
+      <div class="wrapper">
+        <div class="movie-box">
+            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
+            <img class="bird" src="bird.png">
+            <div class="infobox">
+                <p class="description">
+                    A transgender Native Hawaiian teacher inspires a young girl to fulfill 
+                    her destiny of leading the school's male hula troupe, even as she 
+                    struggles to find love and a committed relationship in her own life.
+                </p>
+                <span class="movie-links">
+                    <a>fish</a>
+                </span>
+            </div>
+            <br>
+            Kumu Hina
+        </div>
+        <div class="movie-box">
+            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
+            <img class="bird" src="bird.png">
+            <br>
+            Kumu Hina
+        </div>
+        <div class="movie-box">
+            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
+            <img class="bird" src="bird.png">
+            <br>
+            Kumu Hina
+        </div>
+        <div class="movie-box">
+            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
+            <img class="bird" src="bird.png">
+            <br>
+            Kumu Hina
+        </div>
+        <div class="movie-box">
+            <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
+            <img class="bird" src="bird.png">
+            <br>
+            Kumu Hina
+        </div>
+      </div>
+  </body>
+</html>
+<style>
+    .movie-links{
+        position: absolute;
+        bottom: 0;
+    }
+    .description{
+        float: left;
+    }
+    .infobox {
+        background-color:burlywood;
+        height: 75%;
+        width: 70%;
+        margin: auto;
+        display: inline-block;
+    }
+    .bird {
+        position: relative;
+        visibility: hidden;
+        top: -30vh;
+        left: -32px;
+    }
+    body{
+        background: url('electric_blue.png')
+    }
+    .title{
+        color:orange;
+        text-align: center;
+        font-size: 4em;
+    }
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .movie-box:hover > .bird {
+        visibility: visible;
+    }
+    .movie-box:hover > .speech {
+        visibility: visible;
+    }
+    body{
+        color: white;
+    }
+    .movie-box {
+        height: 40vh;
+    }
+    .poster {
+        height: 30vh;
+        display: inline-block;
+    }
+</style>
