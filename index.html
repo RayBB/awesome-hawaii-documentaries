@@ -10,59 +10,51 @@
           <h1 class="title">Hawaii Documentaries</h1>
       </div>
       <div class="wrapper">
-        <div class="movie-box">
-            <div class="movie_and_title">
-                <img class="poster" src="https://images.justwatch.com/poster/75401352/s718">
-                <img class="bird" src="bird.png">
-                <br>
-                Kumu Hina: The movie with a really long title that fucking goes on forever!
-            </div>
-            <div class="infobox">
-                <p class="description">
-                    A transgender Native Hawaiian teacher inspires a young girl to fulfill 
-                    her destiny of leading the school's male hula troupe, even as she 
-                    struggles to find love and a committed relationship in her own life.
-                </p>
-                <span class="movie_links">
-                    <a href="#">TMDB | WIKI | IMDB | WATCH</a>
-                </span>
-            </div>
-            <br>
-        </div>
+        
       </div>
       <div>
-          <h1>ender</h1>
+          <footer>Made for fun &copy; | <a href="https://github.com/RayBB/awesome-hawaii-documentaries">source</a></footer>
       </div>
   </body>
 </html>
 <script>
-    fetch("./documentaries.json")
+    function tsvJSON(tsv) {
+        /*
+        Taken from this handy dandy gist: https://gist.github.com/iwek/7154706
+        */
+        return tsv.split('\n')
+        .map(line => line.split('\t'))
+        .reduce((a, c, i, d) => {
+            if (i) {
+            const item = Object.fromEntries(c.map((val, j) => [d[0][j], val]))
+            return a ? [...a, item] : [item]
+            }
+        }, [])
+    }
+
+    fetch("./movies.tsv")
     .then(async (response) =>{
-        let movies = await response.json();
-        //debugger;
-        document.querySelector(".wrapper").innerHTML += movies.map(movie => createMovieHtml(movie))
+        const movieTSV = await response.text();
+        const movieArray = tsvJSON(movieTSV);
+        document.querySelector(".wrapper").innerHTML += movieArray.map(movie => createMovieHtml(movie)).join("")
     })
-    .then(data => console.log(data));
-    let text = document.querySelector(".wrapper").innerHTML;
     
     function createMovieHtml(movie){
-        const posterURL = "https://image.tmdb.org/t/p/original" + movie.Poster;
+        const posterURL = movie.Poster ? "https://image.tmdb.org/t/p/original" + movie.Poster : "";
         let out = `
         <div class="movie-box">
             <div class="movie_and_title">
-                <img class="poster" src="${posterURL}">
+                <img loading="lazy" class="poster" src="${posterURL || ''}">
                 <img class="bird" src="bird.png">
                 <br>
                 ${movie.Title}
             </div>
             <div class="infobox">
                 <p class="description">
-                    A transgender Native Hawaiian teacher inspires a young girl to fulfill 
-                    her destiny of leading the school's male hula troupe, even as she 
-                    struggles to find love and a committed relationship in her own life.
+                    ${movie.Description}
                 </p>
                 <span class="movie_links">
-                    <a href="#">TMDB | WIKI | IMDB | WATCH</a>
+                    ${createMovieLinksHTML(getMovieLinks(movie))}
                 </span>
             </div>
             <br>
@@ -70,8 +62,33 @@
         `
         return out;
     }
+    function getMovieLinks(movie){
+        let out = {}
+        let toFind = ["TMDB", "Wikipedia", "IMDB", "JustWatch", "WorldCat"]
+        toFind.forEach(linkType=>{
+            if (movie[linkType]?.includes("http")){
+                out[linkType] = movie[linkType]
+            }
+        })
+        return out;
+    }
+    function createMovieLinksHTML(movieLinks){
+        let keys = Object.keys(movieLinks);
+        let anchors = keys.map(key=>{
+            return `<a href="${movieLinks[key]}">${key}</a>`
+        })
+        return anchors.join(" | ");
+    }
 </script>
+
 <style>
+    footer {
+        width: 100%;
+        text-align: center;
+    }
+    footer > a {
+        color: white;
+    }
     .movie_links{
         width: 100%;
         text-align: center;
@@ -82,15 +99,16 @@
     .movie_and_title{
         position: relative;
         width: 10vw;
+        text-align: center;
     }
     .infobox {
-        background-color:burlywood;
+        background-color:grey;
         position: relative;
         height: 30vh;
         width: 100%;
-        padding: 5px;
+        padding: 0px 5px 0px 5px;
         margin-left: 5px;
-        visibility: hiddenn;
+        border-style: ridge;
     }
     .bird {
         position: absolute;
@@ -117,6 +135,7 @@
     }
     .movie-box:hover > .infobox {
         visibility: visible;
+        background-color: burlywood;
     }
     body{
         color: white;
@@ -133,6 +152,11 @@
     @media only screen and (max-width: 1000px) {
     .movie-box{
         min-width: fit-content;
+    }
+    }
+    @media only screen and (max-width: 700px) {
+    .movie_and_title{
+        width: 50vw;
     }
     }
     .poster {
