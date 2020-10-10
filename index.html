@@ -98,14 +98,13 @@
     }
     .movie_and_title{
         position: relative;
-        width: 10vw;
+        flex: 0 0 40%;
         text-align: center;
     }
     .infobox {
         background-color:grey;
         position: relative;
-        height: 30vh;
-        width: 100%;
+        flex: 1 1 auto;
         padding: 0px 5px 0px 5px;
         margin-left: 5px;
         border-style: ridge;
@@ -141,23 +140,17 @@
         color: white;
     }
     .movie-box {
-        height: 40vh;
         display: flex;
         flex-direction: row;
+        flex: 1 1 auto;
         width: 30vw;
-        min-width: 500px;
         padding: 20px;
     }
     
     @media only screen and (max-width: 1000px) {
-    .movie-box{
-        min-width: fit-content;
-    }
-    }
-    @media only screen and (max-width: 700px) {
-    .movie_and_title{
-        width: 50vw;
-    }
+        .movie-box{
+            min-width: fit-content;
+        }
     }
     .poster {
         width: 100%;
