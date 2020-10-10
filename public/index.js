@@ -1,23 +1,9 @@
-function tsvJSON(tsv) {
-    /*
-    Taken from this handy dandy gist: https://gist.github.com/iwek/7154706
-    */
-    return tsv.split('\n')
-        .map(line => line.split('\t'))
-        .reduce((a, c, i, d) => {
-            if (i) {
-                const item = Object.fromEntries(c.map((val, j) => [d[0][j], val]))
-                return a ? [...a, item] : [item]
-            }
-        }, [])
-}
-
-fetch("./movies.tsv")
-    .then(async (response) => {
-        const movieTSV = await response.text();
-        const movieArray = tsvJSON(movieTSV);
-        document.querySelector(".main").innerHTML += movieArray.map(movie => createMovieHtml(movie)).join("")
-    })
+fetch("./public/movies.tsv")
+.then(async (response) => {
+    const movieTSV = await response.text();
+    const movieArray = tsvJSON(movieTSV);
+    document.querySelector(".main").innerHTML += movieArray.map(movie => createMovieHtml(movie)).join("")
+})
 
 function createMovieHtml(movie) {
     const posterURL = movie.Poster ? "https://image.tmdb.org/t/p/original" + movie.Poster : "";
@@ -58,4 +44,17 @@ function createMovieLinksHTML(movieLinks) {
         return `<a href="${movieLinks[key]}">${key}</a>`
     })
     return anchors.join(" | ");
+}
+function tsvJSON(tsv) {
+    /*
+    Taken from this handy dandy gist: https://gist.github.com/iwek/7154706
+    */
+    return tsv.split('\n')
+        .map(line => line.split('\t'))
+        .reduce((a, c, i, d) => {
+            if (i) {
+                const item = Object.fromEntries(c.map((val, j) => [d[0][j], val]))
+                return a ? [...a, item] : [item]
+            }
+        }, [])
 }
