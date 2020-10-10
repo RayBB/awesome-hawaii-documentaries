@@ -1,0 +1,74 @@
+body {
+	background: url('electric_blue.png');
+	color: white;
+}
+.title {
+	color: orange;
+	text-align: center;
+	font-size: 4em;
+}
+.main {
+	display: flex;
+	flex-wrap: wrap;
+}
+.movie_links {
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+	bottom: 0;
+	position: absolute
+}
+.movie_and_title {
+	position: relative;
+	flex: 0 0 40%;
+	text-align: center;
+}
+.infobox {
+	background-color: grey;
+	position: relative;
+	flex: 1 1 auto;
+	padding: 0px 5px 0px 5px;
+	margin-left: 5px;
+	border-style: ridge;
+}
+.bird {
+	position: absolute;
+	visibility: hidden;
+	height: 32px;
+	top: -32px;
+	right: 0px;
+}
+.movie-box:hover .bird {
+	visibility: visible;
+}
+.movie-box:hover > .infobox {
+	visibility: visible;
+	background-color: burlywood;
+}
+.movie-box {
+	display: flex;
+	flex-direction: row;
+	flex: 1 1 auto;
+	width: 30vw;
+	padding: 20px;
+}
+.poster {
+	width: 100%;
+}
+.full-width-center {
+	width: 100%;
+	text-align: center;
+}
+footer > a {
+	color: white;
+}
+@media only screen and (max-width: 1000px) {
+	.movie-box {
+		width: 100vw;
+	}
+}
+@media (max-width: 500px) {
+	.title {
+		font-size: xx-large;
+	}
+}
