@@ -11,7 +11,7 @@ function createMovieHtml(movie) {
     <div class="movie-box">
         <div class="movie_and_title">
             <img loading="lazy" class="poster" src="${posterURL || ''}">
-            <img class="bird" src="./public/bird.png">
+            <img class="bird" src="./public/honeycreeper.png">
             <br>
             ${movie.Title}
         </div>

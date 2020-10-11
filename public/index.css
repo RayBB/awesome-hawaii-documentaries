@@ -24,7 +24,7 @@ body {
 	text-align: center;
 }
 .infobox {
-	background-color: grey;
+	background-color: darkcyan;
 	position: relative;
 	flex: 1 1 auto;
 	padding: 0px 5px 0px 5px;
@@ -43,7 +43,7 @@ body {
 }
 .movie-box:hover > .infobox {
 	visibility: visible;
-	background-color: burlywood;
+	background-color: orange;
 }
 .movie-box {
 	display: flex;

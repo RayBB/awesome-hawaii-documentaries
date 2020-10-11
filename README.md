@@ -26,6 +26,9 @@ Staying true to the theme of Web 1.0, this site has no frameworks or premade sty
 
 The code in the `tmdb` folder is JavaScript used to pull the address of images for movie covers. I don't anticipate using this since they're relatively easy to grab manually when adding a movie.
 
+# Credits
+- [Marley](https://twitter.com/marley_alford) for making the [honeycreeper](https://en.wikipedia.org/wiki/Honeycreeper) pixel art.
+- [Gimp](https://gimp.org) for the electric blue pattern used in background.
 
 # Contributing
 
