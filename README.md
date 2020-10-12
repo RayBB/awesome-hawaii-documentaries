@@ -22,6 +22,10 @@ Staying true to the theme of Web 1.0, this site has no frameworks or premade sty
 * Not using Google Sheets api because: Web 1.0, easier data, don't want to depend on Google
 * Hardcoding HTML in the JavaScript makes things a bit more fragile
 
+## Theme Switcher
+
+Clicking the sun in the top left corner of the screen switches from Web 1.0 to Web 2.0. Feature was added after a friend who actually wanted to see the documentaries said that the Web 1.0 theme made his eyes bleed. It added a bunch of css vars jazz to the previously simple css.
+
 ## tmdb
 
 The code in the `tmdb` folder is JavaScript used to pull the address of images for movie covers. I don't anticipate using this since they're relatively easy to grab manually when adding a movie.
