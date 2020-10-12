@@ -24,7 +24,7 @@ Staying true to the theme of Web 1.0, this site has no frameworks or premade sty
 
 ## Theme Switcher
 
-Clicking the sun in the top left corner of the screen switches from Web 1.0 to Web 2.0. Feature was added after a friend who actually wanted to see the documentaries said that the Web 1.0 theme made his eyes bleed. It added a bunch of css vars jazz to the previously simple css.
+Clicking the sun in the top left corner of the screen switches from Web 1.0 to Web 2.0. Feature was added after a friend who actually wanted to see the documentaries said that the Web 1.0 theme made his eyes bleed. It added a bunch of css vars to the previously simple css. I also didn't want to load the whole bootstrap css so I just used the relevant parts directly to avoid repainting.
 
 ## tmdb
 

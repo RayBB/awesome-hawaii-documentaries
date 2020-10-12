@@ -67,10 +67,12 @@ function toggleTheme() {
         body.classList.remove("theme-old-web");
         body.classList.add("theme-bootstrap");
         document.querySelectorAll(".movie").forEach(m => m.classList.add("card"));
+        gtag('event', 'Toggle Theme', {'event_label': 'to New Theme', })
     } else {
         body.classList.add("theme-old-web");
         body.classList.remove("theme-bootstrap");
         document.querySelectorAll(".movie").forEach(m => m.classList.remove("card"));
+        gtag('event', 'Toggle Theme', {'event_label': 'to Old Theme', })
     }
 }
 
