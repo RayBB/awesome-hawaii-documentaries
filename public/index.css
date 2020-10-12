@@ -2,20 +2,37 @@ body {
 	background: url('electric_blue.png');
 	color: white;
 }
+.full-width-center {
+	width: 100%;
+	text-align: center;
+}
 .title {
 	color: orange;
-	text-align: center;
 	font-size: 4em;
+}
+@media (max-width: 500px) {
+	.title {
+		font-size: xx-large;
+	}
 }
 .main {
 	display: flex;
 	flex-wrap: wrap;
 }
-.movie_links {
-	width: 100%;
-	text-align: center;
-	bottom: 0;
-	position: absolute
+/*
+START: CSS for movie list
+*/
+.movie {
+	display: flex;
+	flex-direction: row;
+	flex: 1 1 auto;
+	width: 30vw;
+	padding: 20px;
+}
+@media only screen and (max-width: 1000px) {
+	.movie {
+		width: 100vw;
+	}
 }
 .poster_and_title {
 	position: relative;
@@ -24,19 +41,25 @@ body {
 	display:flex;
 	flex-direction: column;
 }
-.poster_holder {
+.movie_poster {
+	width: 100%;
 	flex-grow: 1;
 }
-.bottom_and_center{
-	flex-grow: 0;
-}
-.infobox {
+.description_and_links {
 	background-color: darkcyan;
 	position: relative;
 	flex: 1 1 auto;
 	padding: 0px 5px 0px 5px;
 	margin-left: 5px;
 	border-style: ridge;
+	display:flex;
+	flex-direction: column;
+}
+.movie_description{
+	flex-grow: 1;
+}
+.movie_links {
+	text-align: center;
 }
 .bird {
 	position: absolute;
@@ -45,37 +68,16 @@ body {
 	top: -32px;
 	right: 0px;
 }
-.movie-box:hover .bird {
+.movie:hover .bird {
 	visibility: visible;
 }
-.movie-box:hover > .infobox {
-	visibility: visible;
+.movie:hover > .description_and_links {
 	background-color: orange;
 }
-.movie-box {
-	display: flex;
-	flex-direction: row;
-	flex: 1 1 auto;
-	width: 30vw;
-	padding: 20px;
-}
-.poster {
-	width: 100%;
-}
-.full-width-center {
-	width: 100%;
-	text-align: center;
-}
+/*
+END: CSS for movie list
+*/
+
 footer > a {
 	color: white;
-}
-@media only screen and (max-width: 1000px) {
-	.movie-box {
-		width: 100vw;
-	}
-}
-@media (max-width: 500px) {
-	.title {
-		font-size: xx-large;
-	}
 }

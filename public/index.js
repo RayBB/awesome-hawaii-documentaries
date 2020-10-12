@@ -8,16 +8,14 @@ fetch("./public/movies.tsv")
 function createMovieHtml(movie) {
     const posterURL = movie.Poster ? "https://image.tmdb.org/t/p/original" + movie.Poster : "";
     let out = `
-    <div class="movie-box">
+    <div class="movie">
         <div class="poster_and_title">
-            <div class="poster_holder">
-                <img loading="lazy" class="poster" src="${posterURL || ''}">
-            </div>
+            <img loading="lazy" class="movie_poster" src="${posterURL || ''}">
             <img class="bird" src="./public/honeycreeper.png">
-            <div class="bottom_and_center">${movie.Title}</div>
+            <div>${movie.Title}</div>
         </div>
-        <div class="infobox">
-            <p class="description">
+        <div class="description_and_links">
+            <p class="movie_description">
                 ${movie.Description}
             </p>
             <span class="movie_links">
