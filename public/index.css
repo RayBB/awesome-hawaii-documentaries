@@ -19,6 +19,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 }
+
 /*
 START: CSS for movie list
 */
@@ -38,6 +39,8 @@ START: CSS for movie list
 	position: relative;
 	flex: 0 0 40%;
 	text-align: center;
+}
+.gray_background{
 	background-color: lightgray;
 }
 .movie_poster {
