@@ -9,12 +9,12 @@ function createMovieHtml(movie) {
     const posterURL = movie.Poster ? "https://image.tmdb.org/t/p/original" + movie.Poster : "";
     let out = `
     <div class="movie">
-        <div class="poster_and_title">
+        <div class="poster_container">
             <img loading="lazy" class="movie_poster" src="${posterURL || ''}">
             <img class="bird" src="./public/honeycreeper.png">
-            <div>${movie.Title}</div>
         </div>
         <div class="description_and_links">
+            <div class="full-width-center movie_title">${movie.Title}</div>
             <p class="movie_description">
                 ${movie.Description}
             </p>

@@ -34,16 +34,14 @@ START: CSS for movie list
 		width: 100vw;
 	}
 }
-.poster_and_title {
+.poster_container {
 	position: relative;
 	flex: 0 0 40%;
 	text-align: center;
-	display:flex;
-	flex-direction: column;
+	background-color: lightgray;
 }
 .movie_poster {
 	width: 100%;
-	flex-grow: 1;
 }
 .description_and_links {
 	background-color: darkcyan;
@@ -54,6 +52,9 @@ START: CSS for movie list
 	border-style: ridge;
 	display:flex;
 	flex-direction: column;
+}
+.movie_title{
+	font-size: 1.2em;
 }
 .movie_description{
 	flex-grow: 1;
