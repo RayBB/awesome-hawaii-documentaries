@@ -14,14 +14,21 @@ body {
 .movie_links {
 	width: 100%;
 	text-align: center;
-	display: inline-block;
 	bottom: 0;
 	position: absolute
 }
-.movie_and_title {
+.poster_and_title {
 	position: relative;
 	flex: 0 0 40%;
 	text-align: center;
+	display:flex;
+	flex-direction: column;
+}
+.poster_holder {
+	flex-grow: 1;
+}
+.bottom_and_center{
+	flex-grow: 0;
 }
 .infobox {
 	background-color: darkcyan;
