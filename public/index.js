@@ -1,48 +1,65 @@
-fetch("./public/movies.tsv")
+function main(){
+    /*
+    Everything that should run when page loads
+    */
+    fetch("./public/movies.tsv")
     .then(async (response) => {
         const movieTSV = await response.text();
         const movieArray = tsvJSON(movieTSV);
         document.querySelector(".main").innerHTML += movieArray.map(movie => createMovieHtml(movie)).join("");
     })
+    document.body.querySelector("#theme-button").onclick = toggleTheme;
+}
 
 function createMovieHtml(movie) {
+    /*
+    Input: A movie json that has been converted from TSV.
+    Output: Full HTML of a movie
+    */
     const posterURL = movie.Poster ? "https://image.tmdb.org/t/p/original" + movie.Poster : "";
-    let out = `
+    const greyBackgroundClass = movie.Poster ? '' : 'gray-background'; // Only add grey background if there is no poster
+    const movieLinksHTML = createMovieLinksHTML(getMovieLinks(movie));
+    const movieHTML = `
     <div class="movie">
-        <div class="poster_container ${movie.Poster ? '' : 'gray_background'}">
-            <img loading="lazy" class="movie_poster" src="${posterURL || ''}">
+        <div class="poster-container ${greyBackgroundClass}">
+            <img loading="lazy" class="movie-poster" src="${posterURL}">
             <img class="bird" src="./public/honeycreeper.png">
         </div>
-        <div class="description_and_links">
+        <div class="movie-info-container">
             <div class="full-width-center h4">${movie.Title}</div>
-            <p class="movie_description">
-                ${movie.Description}
-            </p>
-            <span class="movie_links">
-                ${createMovieLinksHTML(getMovieLinks(movie))}
+            <p class="movie-description">${movie.Description}</p>
+            <span class="movie-links">
+                ${movieLinksHTML}
             </span>
         </div>
-        <br>
     </div>
     `
-    return out;
+    return movieHTML;
 }
 
 function getMovieLinks(movie) {
+    /*
+    Input: A movie json that has been converted from TSV.
+    Output: A map with source as key and url as value.
+    */
     let out = {};
-    const toFind = ["TMDB", "Wikipedia", "IMDB", "JustWatch", "WorldCat"]
-    toFind.forEach(linkType => {
-        if (movie[linkType]?.includes("http")) {
-            out[linkType] = movie[linkType];
+    const sources = ["TMDB", "Wikipedia", "IMDB", "JustWatch", "WorldCat"]
+    sources.forEach(source => {
+        if (movie[source].includes("http")) {
+            out[source] = movie[source];
         }
     })
     return out;
 }
 
 function createMovieLinksHTML(movieLinks) {
-    const keys = Object.keys(movieLinks);
-    const anchors = keys.map(key => {
-        return `<a href="${movieLinks[key]}">${key}</a>`
+    /*
+    Input: A map with source as key and url as value.
+    Output: String of HTML with | separated anchors for each link;
+    */
+    const sources = Object.keys(movieLinks);
+    const anchors = sources.map(source => {
+        return `<a href="${movieLinks[source]}">${source}</a>`
     })
     return anchors.join(" | ");
 }
@@ -62,18 +79,20 @@ function tsvJSON(tsv) {
 }
 
 function toggleTheme() {
-    const body = document.body;
-    if (body.className === "theme-old-web") {
-        body.classList.remove("theme-old-web");
-        body.classList.add("theme-bootstrap");
-        document.querySelectorAll(".movie").forEach(m => m.classList.add("card"));
-        gtag('event', 'Toggle Theme', {'event_label': 'to New Theme', })
-    } else {
-        body.classList.add("theme-old-web");
-        body.classList.remove("theme-bootstrap");
-        document.querySelectorAll(".movie").forEach(m => m.classList.remove("card"));
-        gtag('event', 'Toggle Theme', {'event_label': 'to Old Theme', })
-    }
+    /*
+    Switches from the Web 1.0 theme to the beautiful bootstrap theme.
+    Also, sends an event to Google that the button was clicked.
+    */
+    const oldThemeClass = "theme-old-web";
+    const newThemeClass = "theme-bootstrap";
+    const bodyClasses = document.body.classList;
+    const eventLabel = bodyClasses.contains(oldThemeClass) ? 'to New Theme' : 'to Old Theme';
+
+    bodyClasses.toggle(oldThemeClass);
+    bodyClasses.toggle(newThemeClass);
+    document.querySelectorAll(".movie").forEach(m => m.classList.toggle("card"));
+
+    gtag('event', 'Toggle Theme', {'event_label': eventLabel})
 }
 
-document.body.querySelector("#themeButton").onclick = toggleTheme;
+main();

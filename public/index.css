@@ -5,13 +5,11 @@ body {
 	line-height: var(--line-height);
 	margin: var(--body-margin);
 }
-
-#themeButton{
+#theme-button {
 	position: absolute;
 	left: 0;
 	top: 0;
 }
-
 .full-width-center {
 	width: 100%;
 	text-align: center;
@@ -50,18 +48,18 @@ START: CSS for movie list
 		width: 100vw;
 	}
 }
-.poster_container {
+.poster-container {
 	position: relative;
 	flex: 0 0 40%;
 	text-align: center;
 }
-.gray_background{
+.gray-background {
 	background-color: lightgray;
 }
-.movie_poster {
+.movie-poster {
 	width: 100%;
 }
-.description_and_links {
+.movie-info-container {
 	background-color: var(--movie-background);
 	position: relative;
 	flex: 1 1 auto;
@@ -76,10 +74,10 @@ START: CSS for movie list
 	line-height: var(--line-height-h4);
 	font-weight: var(--font-weight);
 }
-.movie_description{
+.movie-description {
 	flex-grow: 1;
 }
-.movie_links {
+.movie-links {
 	text-align: center;
 }
 .bird {
@@ -92,7 +90,7 @@ START: CSS for movie list
 .movie:hover .bird {
 	visibility: visible;
 }
-.movie:hover > .description_and_links {
+.movie:hover > .movie-info-container {
 	background-color: var(--movie-background-hover);
 }
 /*
