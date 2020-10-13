@@ -3,6 +3,8 @@ A collection documentaries related to Hawaii
 
 Live site: https://raybb.github.io/awesome-hawaii-documentaries/
 
+<a href="https://www.producthunt.com/posts/awesome-hawaii-documentaries?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-awesome-hawaii-documentaries" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=270520&theme=light" alt="Awesome Hawaii Documentaries - The best documentaries of Hawaii with the style of the 90s | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
 # Why
 
 Before moving to Hawaii I wanted to watch documentaries to learn about the area. Unfortunately, Google, Amazon, Netflix, IMDB, and local library searches all lead to just a few documentaries. I knew there were more out there so I started compiling a list from more obscure sources.
