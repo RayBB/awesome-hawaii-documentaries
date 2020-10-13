@@ -1,0 +1,154 @@
+body {
+	background: var(--main-background);
+	color: var(--font-color);
+	font-family: var(--font-family-long);
+	line-height: var(--line-height);
+	margin: var(--body-margin);
+}
+#theme-button {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.full-width-center {
+	width: 100%;
+	text-align: center;
+}
+.title {
+	color: orange;
+	font-size: 4em;
+	margin: var(--title-margin);
+	font-weight: var(--font-weight);
+	line-height: var(--line-height-h4);
+	font-family: var(--font-family-long);
+}
+@media (max-width: 500px) {
+	.title {
+		font-size: xx-large;
+	}
+}
+.main {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/*
+START: CSS for movie list
+*/
+.movie {
+	display: flex;
+	flex-direction: row !important;
+	flex: 1 1 auto;
+	width: 30vw;
+	padding: var(--movie-padding);
+	margin: var(--movie-margin);
+}
+@media only screen and (max-width: 1000px) {
+	.movie {
+		width: 100vw;
+	}
+}
+.poster-container {
+	position: relative;
+	flex: 0 0 40%;
+	text-align: center;
+}
+.gray-background {
+	background-color: lightgray;
+}
+.movie-poster {
+	width: 100%;
+}
+.movie-info-container {
+	background-color: var(--movie-background);
+	position: relative;
+	flex: 1 1 auto;
+	padding: 0px 5px 0px 5px;
+	margin-left: 5px;
+	border-style: var(--border-ridge);
+	display:flex;
+	flex-direction: column;
+}
+.h4 {
+	font-size: 1.5em;
+	line-height: var(--line-height-h4);
+	font-weight: var(--font-weight);
+}
+.movie-description {
+	flex-grow: 1;
+}
+.movie-links {
+	text-align: center;
+}
+.bird {
+	position: absolute;
+	visibility: hidden;
+	height: 32px;
+	top: -32px;
+	right: 0px;
+}
+.movie:hover .bird {
+	visibility: visible;
+}
+.movie:hover > .movie-info-container {
+	background-color: var(--movie-background-hover);
+}
+/*
+END: CSS for movie list
+*/
+
+body a {
+	color: var(--link-color);
+}
+
+.theme-bootstrap {
+	--main-background: unset;
+	--font-color: var(unset);
+	--link-color: #007bff;
+	--movie-padding: unset;
+	--movie-margin: 10px;
+	--movie-background: unset;
+	--movie-background-hover: unset;
+	--border-ridge: unset;
+	--font-family-long: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+	--title-margin: .5rem;
+	--line-height: 1.5;
+	--line-height-h4: 1.2;
+	--font-weight: 500;
+	--body-margin: 8px;
+ }
+
+ .theme-old-web {
+	--main-background: url('electric_blue.png');
+	--font-color: var(--link-color);
+	--link-color: white;
+	--movie-padding: 20px;
+	--movie-margin: unset;
+	--movie-background: darkcyan;
+	--movie-background-hover: orange;
+	--border-ridge: ridge;
+	--font-family-long: serif;
+	--title-margin: unset;
+	--line-height: unset;
+	--line-height-h4: unset;
+	--font-weight: unset;
+	--body-margin: unset;
+ }
+
+
+ /*
+ Thanks bootstrap
+ */
+ .card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
