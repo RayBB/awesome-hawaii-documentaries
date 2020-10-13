@@ -172,3 +172,6 @@ body.theme-old-web {
     background-color: rgba(0,0,0,.03);
     border-bottom: 1px solid rgba(0,0,0,.125);
 }
+.theme-bootstrap #hit-counter {
+	display: none;
+}
