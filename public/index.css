@@ -1,5 +1,4 @@
 body {
-	background: var(--main-background);
 	color: var(--font-color);
 	font-family: var(--font-family-long);
 	line-height: var(--line-height);
@@ -106,8 +105,7 @@ body a {
 	color: var(--link-color);
 }
 .theme-bootstrap {
-	--main-background: unset;
-	--font-color: var(unset);
+	--font-color: unset;
 	--link-color: #007bff;
 	--movie-padding: unset;
 	--movie-margin: 10px;
@@ -123,7 +121,6 @@ body a {
 	--body-margin: 8px;
  }
 .theme-old-web {
-	--main-background: url('electric_blue.png');
 	--font-color: var(--link-color);
 	--link-color: white;
 	--movie-padding: 20px;
@@ -140,10 +137,17 @@ body a {
 	--body-margin: unset;
  }
 
+body.theme-old-web {
+	/*
+	This is it's own thing because using vars with relative urls doesn't work on safari
+	https://github.com/w3c/csswg-drafts/issues/757
+	*/
+	background: url('electric_blue.png')
+}
  /*
  Thanks bootstrap
  */
-.card {
+.theme-bootstrap .card {
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -158,10 +162,10 @@ body a {
 
 	align-items: center;
 }
-.card .poster-container {
+.theme-bootstrap .card .poster-container {
 	background-color: lightgray;
 }
-.card .card-header {
+.theme-bootstrap .card .card-header {
 	padding-top: .5em;
     padding-bottom: .5em;
     margin-bottom: 0;

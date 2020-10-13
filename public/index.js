@@ -20,7 +20,7 @@ function createMovieHtml(movie) {
     const greyBackgroundClass = movie.Poster ? '' : 'gray-background'; // Only add grey background if there is no poster
     const movieLinksHTML = createMovieLinksHTML(getMovieLinks(movie));
     const movieHTML = `
-    <div class="movie">
+    <div class="movie card">
         <div class="poster-container ${greyBackgroundClass}">
             <img loading="lazy" class="movie-poster" src="${posterURL}">
             <img class="bird" src="./public/honeycreeper.png">
@@ -90,7 +90,6 @@ function toggleTheme() {
 
     bodyClasses.toggle(oldThemeClass);
     bodyClasses.toggle(newThemeClass);
-    document.querySelectorAll(".movie").forEach(m => m.classList.toggle("card"));
 
     gtag('event', 'Toggle Theme', {'event_label': eventLabel})
 }
