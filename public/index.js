@@ -26,7 +26,7 @@ function createMovieHtml(movie) {
             <img class="bird" src="./public/honeycreeper.png">
         </div>
         <div class="movie-info-container">
-            <div class="full-width-center h4">${movie.Title}</div>
+            <div class="full-width-center h4 card-header">${movie.Title}</div>
             <p class="movie-description">${movie.Description}</p>
             <span class="movie-links">
                 ${movieLinksHTML}
