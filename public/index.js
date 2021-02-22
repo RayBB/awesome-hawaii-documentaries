@@ -69,6 +69,7 @@ function tsvJSON(tsv) {
     Taken from this handy dandy gist: https://gist.github.com/iwek/7154706
     */
     return tsv.split('\n')
+        .filter(line=>line.length>0)
         .map(line => line.split('\t'))
         .reduce((a, c, i, d) => {
             if (i) {
